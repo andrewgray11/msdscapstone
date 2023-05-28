@@ -1,0 +1,19 @@
+service: solar-energy-api
+provider:
+  name: aws
+  runtime: python3.8
+  memorySize: 512
+  timeout: 30
+  environment:
+    MODEL_FILE: model.pkl
+
+functions:
+  predict:
+    handler: api.predict
+    events:
+      - http: 
+          path: predict
+          method: post
+
+plugins:
+
